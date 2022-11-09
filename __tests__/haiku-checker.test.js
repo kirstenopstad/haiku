@@ -8,6 +8,10 @@ describe('check haiku', () => {
     haiku = new Haiku();
   });
 
+  test('It should return "not enought lines" if there are less than three lines', () => {
+    expect(haiku.checkHaiku(`Hello, world!`)).toEqual("not enough lines");
+  })
+
   test('It should return "too many lines" if there are more than three lines', () => { 
     expect(haiku.checkHaiku(`
       Good Morning Sun
