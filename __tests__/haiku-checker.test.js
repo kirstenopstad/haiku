@@ -12,6 +12,10 @@ describe('check haiku', () => {
     haiku = new Haiku("hellow world");
   });
 
+  test('It should count an instance of short words that end in e', () => {
+    expect(haiku.checkWord("me")).toEqual(1);
+  })
+
   test('It should count an instance of -le as an exception to the silent e rule', () => {
     expect(haiku.checkWord("candle")).toEqual(2);
     expect(haiku.checkWord("fungible")).toEqual(3);
