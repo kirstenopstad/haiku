@@ -5,8 +5,20 @@ export class Haiku {
     this.text = text;
   }
 
+  checkOurHaiku = () => {
+    const result = this.checkHaiku(this.text);
+    if (result != "poem") {
+      return false;
+    }
+  }
+
   countSyllables = (line) => {
-    return line;
+    const words = line.split(" ");
+    let totalSyllables = 0;
+    words.forEach(element => {
+      totalSyllables += this.checkWord(element);
+    });
+    return totalSyllables;
   }
 
   checkHaiku = (text) => {
