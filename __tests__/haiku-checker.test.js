@@ -12,6 +12,10 @@ describe('check haiku', () => {
     haiku = new Haiku("hellow world");
   });
 
+  test('should return line input', () => {
+    expect(haiku.countSyllables("hello world")).toEqual("hello world");
+  })
+
   test('should count word with vowel before le as one syllable', () => {
     expect(haiku.checkWord("male")).toEqual(1);
   })
