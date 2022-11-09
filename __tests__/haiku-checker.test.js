@@ -3,19 +3,23 @@ import { Haiku } from '../src/js/haiku-checker.js';
 
 describe('check haiku', () => {
   let haiku;
-  let goodHaiku
+  let goodHaiku;
   let shortHaiku
   let longHaiku
 
 
   beforeEach(() => {
     haiku = new Haiku("hellow world");
-    goodHaiku = 
+    goodHaiku = new Haiku(
     `snow mixes with rain—
     my mother keeps calling me
-    by my brother's name`
+    by my brother's name`)
   });
   
+  test('It should retun true if poem is a haiku', () => {
+    expect(goodHaiku.checkOurHaiku()).toEqual(true);
+  })
+
   test('It should return false if not a poem', () => {
     expect(haiku.checkOurHaiku()).toEqual(false);
   })
