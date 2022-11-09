@@ -12,11 +12,13 @@ export class Haiku {
       console.log(lineArray);
       console.log(lineArray.length);
       if (lineArray.length > 3) {
-        return "too many lines"
-      } 
+        return "too many lines";
+      }else if (lineArray.length < 3) {
+        return "not enough lines";
+      }
       return "poem";
     } else {
       return "not a poem";
     }
- s }
+  }
 }
