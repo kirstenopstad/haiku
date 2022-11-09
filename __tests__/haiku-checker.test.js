@@ -10,7 +10,15 @@ describe('check haiku', () => {
 
   beforeEach(() => {
     haiku = new Haiku("hellow world");
+    goodHaiku = 
+    `snow mixes with rain—
+    my mother keeps calling me
+    by my brother's name`
   });
+  
+  test('It should return false if not a poem', () => {
+    expect(haiku.checkOurHaiku()).toEqual(false);
+  })
 
   test('should return line input', () => {
     expect(haiku.countSyllables("hello world")).toEqual(3);
@@ -58,6 +66,7 @@ describe('check haiku', () => {
   test('test haiku constructor', () => {
     expect(haiku.text).toEqual("hellow world");
   });
+
   test('It should return "not enought lines" if there are less than three lines', () => {
     expect(haiku.checkHaiku(`Hello, world!`)).toEqual("not enough lines");
   })
