@@ -8,12 +8,21 @@ describe('check haiku', () => {
     haiku = new Haiku();
   });
 
+  test('It should return "too many lines" if there are more than three lines', () => { 
+    expect(haiku.checkHaiku(`
+      Good Morning Sun
+      I am a bird
+      Wearing a white poleyster shirt
+      Who are you?
+    `)).toEqual("too many lines");
+  });
+
   test('It should return "not a poem" if no text is inputted', () => {
-    expect(checkHaiku()).toEqual("not a poem");
+    expect(haiku.checkHaiku()).toEqual("not a poem");
   });
 
   test('It should return "poem" if text is inputted', () => {
-    expect(checkHaiku("this is a pipe")).toEqual("poem");
+    expect(haiku.checkHaiku("this is a pipe")).toEqual("poem");
   });
   
 })
