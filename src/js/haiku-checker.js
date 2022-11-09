@@ -31,10 +31,21 @@ export class Haiku {
   checkWord = (word) => {
     // define vowel set
     const vowels = /[aeiouy]/
+    const diphVowels = ["oo", "ea", "oi", "ou", "eau"];
     let syllableCount = 0;
     for (let i = 0; i < word.length; i++) {
       if (vowels.test(word[i])) {
         // if silent e, don't add to syllable count
+        if ( i > 0 && vowels.test(word[i-1])){
+          const pair = word.substring(i-1, i+1);
+          if(diphVowels.includes(pair)){
+            if(pair === "ea" && i + 1 < word.length && word[i+1] === 'u'){
+              i++;
+              continue;
+            }
+            continue;
+          }
+        }
         if (word[i] === 'e' && (i === word.length - 1)) {
           continue
         } else {
