@@ -3,11 +3,18 @@ import { Haiku } from '../src/js/haiku-checker.js';
 
 describe('check haiku', () => {
   let haiku;
+  let goodHaiku
+  let shortHaiku
+  let longHaiku
+
 
   beforeEach(() => {
-    haiku = new Haiku();
+    haiku = new Haiku("hellow world");
   });
 
+  test('test haiku constructor', () => {
+    expect(haiku.text).toEqual("hellow world");
+  });
   test('It should return "not enought lines" if there are less than three lines', () => {
     expect(haiku.checkHaiku(`Hello, world!`)).toEqual("not enough lines");
   })
@@ -26,7 +33,9 @@ describe('check haiku', () => {
   });
 
   test('It should return "poem" if text is inputted', () => {
-    expect(haiku.checkHaiku("this is a pipe")).toEqual("poem");
+    expect(haiku.checkHaiku(`Good Morning Sun
+    I am a bird
+    Wearing a white poleyster shirt`)).toEqual("poem");
   });
   
 })
