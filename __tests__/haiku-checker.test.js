@@ -17,6 +17,11 @@ describe('check haiku', () => {
     expect(haiku.checkWord("fungible")).toEqual(3);
   })
   
+  test('it should count non diph vowels as seperate syllables', () => {
+    expect(haiku.checkWord("diet")).toEqual(2);
+    expect(haiku.checkWord("diaeresis")).toEqual(4);
+  })
+
   test('It should count two diphthong vowels as one syllable', () => {
     expect(haiku.checkWord("moon")).toEqual(1);
     expect(haiku.checkWord("coin")).toEqual(1);
