@@ -1,10 +1,22 @@
 // Business Logic
-class Haiku {
-}
+export class Haiku {
 
-export const checkHaiku = (text) => {
-  if (text) {
-    return "poem";
+  constructor() {
+
   }
-return "not a poem";
+
+  checkHaiku = (text) => {
+    if (text) {
+      // Check line count
+      const lineArray = text.split("\n");
+      console.log(lineArray);
+      console.log(lineArray.length);
+      if (lineArray.length > 3) {
+        return "too many lines"
+      } 
+      return "poem";
+    } else {
+      return "not a poem";
+    }
+ s }
 }
