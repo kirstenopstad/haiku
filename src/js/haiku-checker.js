@@ -30,15 +30,19 @@ export class Haiku {
 
   checkWord = (word) => {
     // define vowel set
-    const vowels = /[aeiou]/
-    let vowelCount = 0;
+    const vowels = /[aeiouy]/
+    let syllableCount = 0;
     for (let i = 0; i < word.length; i++) {
       if (vowels.test(word[i])) {
-        console.log(word[i]);
-        vowelCount++;
+        // if silent e, don't add to syllable count
+        if (word[i] === 'e' && (i === word.length - 1)) {
+          continue
+        } else {
+        syllableCount++;
+        }
       }
     }
-    return vowelCount;
+    return syllableCount;
     
   }
 }
