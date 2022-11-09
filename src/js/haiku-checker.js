@@ -5,6 +5,10 @@ export class Haiku {
     this.text = text;
   }
 
+  countSyllables = (line) => {
+    return line;
+  }
+
   checkHaiku = (text) => {
     if (text) {
       // Check line count
