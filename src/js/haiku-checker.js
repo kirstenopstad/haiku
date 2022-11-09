@@ -31,11 +31,11 @@ export class Haiku {
   checkWord = (word) => {
     // define vowel set
     const vowels = /[aeiouy]/
-    const diphVowels = ["oo", "ea", "oi", "ou", "eau"];
+    const diphVowels = ["oo", "ea", "oi", "ou", "oa", "ee", "ai", "eau"];
     let syllableCount = 0;
     for (let i = 0; i < word.length; i++) {
       if (vowels.test(word[i])) {
-        // if silent e, don't add to syllable count
+        // check for dipthong vowel groups
         if ( i > 0 && vowels.test(word[i-1])){
           const pair = word.substring(i-1, i+1);
           if(diphVowels.includes(pair)){
@@ -46,6 +46,7 @@ export class Haiku {
             continue;
           }
         }
+        // if silent e, don't add to syllable count
         if (word[i] === 'e' && (i === word.length - 1)) {
           continue
         } else {
