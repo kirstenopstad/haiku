@@ -48,7 +48,11 @@ export class Haiku {
         }
         // if silent e and not -le, don't add to syllable count
         if (word[i] === 'e' && (i === word.length - 1) && (word[i-1] != 'l')) {
-          continue
+          if(syllableCount === 0){
+            syllableCount++;
+          }
+          continue;
+        
         } else {
         syllableCount++;
         }
