@@ -12,6 +12,10 @@ describe('check haiku', () => {
     haiku = new Haiku("hellow world");
   });
 
+  test('It should return the number of syllables in the presence of a silent e', () => {
+    expect(haiku.checkWord("tape")).toEqual(1);
+  })
+
   test('It should return the number of vowels in a word', () => {
     expect(haiku.checkWord("banana")).toEqual(3);
   })
