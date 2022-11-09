@@ -14,10 +14,19 @@ describe('check haiku', () => {
 
   test('It should count two diphthong vowels as one syllable', () => {
     expect(haiku.checkWord("moon")).toEqual(1);
+    expect(haiku.checkWord("coin")).toEqual(1);
+    expect(haiku.checkWord("loud")).toEqual(1);
+    expect(haiku.checkWord("bread")).toEqual(1);
+    expect(haiku.checkWord("boat")).toEqual(1);
+    expect(haiku.checkWord("meet")).toEqual(1);
+    expect(haiku.checkWord("pair")).toEqual(1);
+    expect(haiku.checkWord("avoid")).toEqual(2);
+    expect(haiku.checkWord("beautiful")).toEqual(3);
   })
 
   test('It should return the number of syllables in the presence of a silent e', () => {
     expect(haiku.checkWord("tape")).toEqual(1);
+    expect(haiku.checkWord("extreme")).toEqual(2);
   })
 
   test('It should return the number of vowels in a word', () => {
