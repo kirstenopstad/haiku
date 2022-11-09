@@ -12,6 +12,10 @@ describe('check haiku', () => {
     haiku = new Haiku("hellow world");
   });
 
+  test('It should return the number of vowels in a word', () => {
+    expect(haiku.checkWord("banana")).toEqual(3);
+  })
+
   test('test haiku constructor', () => {
     expect(haiku.text).toEqual("hellow world");
   });
