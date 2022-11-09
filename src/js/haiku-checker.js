@@ -1,8 +1,8 @@
 // Business Logic
 export class Haiku {
 
-  constructor() {
-
+  constructor(text) {
+    this.text = text;
   }
 
   checkHaiku = (text) => {
