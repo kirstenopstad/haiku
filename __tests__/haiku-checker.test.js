@@ -13,10 +13,26 @@ describe('check haiku', () => {
     goodHaiku = new Haiku(
     `snow mixes with rain—
     my mother keeps calling me
-    by my brother's name`)
+    by my brother's name`);
+    shortHaiku = new Haiku(
+      `snow mixes with rain—
+      my mother calling me
+      by my brother's`);
+    longHaiku = new Haiku(
+      `white snow mixes with rain—
+      my own mother keeps calling me
+      by my brother's name`);
+
   });
-  
-  test('It should retun true if poem is a haiku', () => {
+  test('It should return false if haiku is too short', () => {
+    expect(shortHaiku.checkOurHaiku()).toEqual(false);
+  })
+
+  test('It should return false if haiku is too long', () => {
+    expect(longHaiku.checkOurHaiku()).toEqual(false);
+  })
+
+  test('It should return true if poem is a haiku', () => {
     expect(goodHaiku.checkOurHaiku()).toEqual(true);
   })
 
