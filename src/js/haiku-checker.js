@@ -60,11 +60,13 @@ export class Haiku {
   checkWord(word) {
     // define vowel set
     const vowels = /[aeiouy]/;
-    const diphVowels = ["oo", "ea", "ay", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
-    const hardConst = ['c','x','h','g','s','z'];
+    const diphVowels = ["oo","ui", "ea", "ay", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
+    const hardConstS = ['c','x','h','g','s','z'];
+    let lastLetter;
     let syllableCount = 0;
     // check for -es or -ed ending
     if ((word[word.length - 1] === ('s') || word[word.length - 1] === ('d')) && word[word.length - 2] === 'e') {
+      lastLetter = word[word.length-1];
       word = word.slice(0, word.length - 1);
       console.log(word);
     }
@@ -90,7 +92,7 @@ export class Haiku {
               // else add to syllable count
               syllableCount++;
             }
-          } else if (hardConst.includes(word[i-1])) {
+          } else if (hardConstS.includes(word[i-1]) && lastLetter === 's') {
           // if previous letter is c|g|h|s|x|z
             // then add syllable
             syllableCount++;
