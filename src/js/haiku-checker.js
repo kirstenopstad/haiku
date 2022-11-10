@@ -5,29 +5,29 @@ export class Haiku {
     this.text = text;
   }
 
-  checkOurHaiku () {
+
+  checkOurHaiku() {
     const result = this.checkHaiku(this.text);
     if (result != "poem") {
       return false;
     } else {
       const line1Syll = this.countSyllables(this.line1);
-      console.log(line1Syll);
-      console.log(typeof line1Syll);
+      // console.log(line1Syll);
+      // console.log(typeof line1Syll);
       const line2Syll = this.countSyllables(this.line2);
-      console.log(line2Syll);
-      console.log(typeof line2Syll);
+      // console.log(line2Syll);
+      // console.log(typeof line2Syll);
       const line3Syll = this.countSyllables(this.line3);
-      console.log(line3Syll);
-      console.log(typeof line3Syll);
+      // console.log(line3Syll);
+      // console.log(typeof line3Syll);
       if (line1Syll === 5 && line2Syll === 7 && line3Syll === 5) {
-        console.log("second" + this.countSyllables(this.line1));
         return true;
       }
       return false;
     }
   }
 
-  countSyllables (line) {
+  countSyllables(line) {
     const words = line.split(" ");
     let totalSyllables = 0;
     words.forEach(element => {
@@ -57,11 +57,16 @@ export class Haiku {
     }
   }
 
-  checkWord (word) {
+  checkWord(word) {
     // define vowel set
-    const vowels = /[aeiouy]/
+    const vowels = /[aeiouy]/;
     const diphVowels = ["oo", "ea", "ay", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
     let syllableCount = 0;
+    // check for -es or -ed ending
+    if ((word[word.length - 1] === ('s') || word[word.length - 1] === ('d')) && word[word.length - 2] === 'e') {
+      word = word.slice(0, word.length - 1);
+      console.log(word);
+    }
     for (let i = 0; i < word.length; i++) {
       if (vowels.test(word[i])) {
         // check for dipthong vowel groups
@@ -90,13 +95,14 @@ export class Haiku {
               syllableCount++;
             }
             // else don't add to syllable count
-            continue
+            continue;
           }
         } else {
           syllableCount++;
         }
       }
     }
+
     return syllableCount;
   }
 }
