@@ -10,16 +10,22 @@ export class Haiku {
 
   addWBWord(word, syllables) {
     // !this.wordBank[syllables].includes(word) // & word not in array
+    if(syllables > this.highestSyllable){
+      this.highestSyllable = syllables;
+    }
     if(this.wordBank[syllables] !== undefined && !this.wordBank[syllables].includes(word)){ //syllables array exists 
       this.wordBank[syllables].push(word);
       this.WBWordCount++;
+      return true;
     }
     else if (this.wordBank[syllables] === undefined) {
       let array = [];
       array.push(word);
       this.wordBank[syllables] = array;
       this.WBWordCount++;
+      return true;
     }
+    return false;
   }
 
   checkOurHaiku() {
