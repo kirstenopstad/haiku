@@ -24,6 +24,25 @@ describe('check haiku', () => {
 
   });
   // word Bank tests --------
+
+  test('It should not store duplicates', () => {
+    haiku.addWBWord("word", 1);
+    haiku.addWBWord("word", 1);
+    expect(haiku.wordBank[1].toString()).toEqual("word");
+  }); 
+
+  test('It should store an array of words of the same syllable', () => {
+    haiku.addWBWord("word", 1);
+    haiku.addWBWord("mouse", 1);
+    expect(haiku.wordBank[1].toString()).toEqual("word,mouse");
+  }); 
+
+  test('It should store a word in the word bank in existing sylablle array', () => {
+    haiku.addWBWord("word", 1);
+    haiku.addWBWord("mouse", 1);
+    expect(haiku.WBWordCount).toEqual(2);
+  });
+
   test(('it should store a word in the word bank'), () => {
     haiku.addWBWord("word", 1);
     expect(haiku.WBWordCount).toEqual(1);

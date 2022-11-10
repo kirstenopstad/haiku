@@ -10,7 +10,7 @@ export class Haiku {
 
   addWBWord(word, syllables) {
     // !this.wordBank[syllables].includes(word) // & word not in array
-    if(this.wordBank[syllables] !== undefined){ //syllables array exists 
+    if(this.wordBank[syllables] !== undefined && !this.wordBank[syllables].includes(word)){ //syllables array exists 
       this.wordBank[syllables].push(word);
       this.WBWordCount++;
     }
