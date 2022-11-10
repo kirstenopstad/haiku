@@ -50,6 +50,15 @@ describe('check haiku', () => {
 
   // checkWord tests -------
 
+  test('It should count words that end -es preceded by hard consonant', () => {
+    expect(haiku.checkWord("dices")).toEqual(2);
+    expect(haiku.checkWord("pages")).toEqual(2);
+    expect(haiku.checkWord("ashes")).toEqual(2);
+    expect(haiku.checkWord("passes")).toEqual(2);
+    expect(haiku.checkWord("mixes")).toEqual(2);
+    expect(haiku.checkWord("grazes")).toEqual(2);
+  });
+
   test('It should count words that end in -ed or -es as silent e', () => {
     expect(haiku.checkWord("leaves")).toEqual(1);
     expect(haiku.checkWord("wakened")).toEqual(2);

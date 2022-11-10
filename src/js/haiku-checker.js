@@ -61,6 +61,7 @@ export class Haiku {
     // define vowel set
     const vowels = /[aeiouy]/;
     const diphVowels = ["oo", "ea", "ay", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
+    const hardConst = ['c','x','h','g','s','z'];
     let syllableCount = 0;
     // check for -es or -ed ending
     if ((word[word.length - 1] === ('s') || word[word.length - 1] === ('d')) && word[word.length - 2] === 'e') {
@@ -89,7 +90,11 @@ export class Haiku {
               // else add to syllable count
               syllableCount++;
             }
-          } else {
+          } else if (hardConst.includes(word[i-1])) {
+          // if previous letter is c|g|h|s|x|z
+            // then add syllable
+            syllableCount++;
+          } else  {
             // if short word ending in e has no syllables yet, give it a syllable
             if (syllableCount === 0) {
               syllableCount++;
