@@ -23,6 +23,12 @@ describe('check haiku', () => {
       by my brother's name`);
 
   });
+  // word Bank tests --------
+  test(('it should store a word in the word bank'), () => {
+    haiku.addWBWord("word", 1);
+    expect(haiku.WBWordCount).toEqual(1);
+  });
+
 
   // checkOurHaiku tests -------
 

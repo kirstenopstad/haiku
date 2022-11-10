@@ -3,8 +3,24 @@ export class Haiku {
 
   constructor(text) {
     this.text = text;
+    this.wordBank = {};
+    this.highestSyllable = 0;
+    this.WBWordCount = 0;
   }
 
+  addWBWord(word, syllables) {
+    // !this.wordBank[syllables].includes(word) // & word not in array
+    if(this.wordBank[syllables] !== undefined){ //syllables array exists 
+      this.wordBank[syllables].push(word);
+      this.WBWordCount++;
+    }
+    else if (this.wordBank[syllables] === undefined) {
+      let array = [];
+      array.push(word);
+      this.wordBank[syllables] = array;
+      this.WBWordCount++;
+    }
+  }
 
   checkOurHaiku() {
     const result = this.checkHaiku(this.text);
@@ -57,12 +73,15 @@ export class Haiku {
     }
   }
 
+ 
+
   checkWord(word) {
     // define vowel set
     const vowels = /[aeiouy]/;
     const diphVowels = ["oo","ui", "ea", "ay", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
     const hardConstS = ['c','x','h','g','s','z'];
     const hardConstD = ['d','t'];
+    const endingConst = ['l','r'];
     let lastLetter;
     let syllableCount = 0;
     // check for -es or -ed ending
@@ -84,8 +103,8 @@ export class Haiku {
         }
         // if last letter is e
         if (word[i] === 'e' && (i === word.length - 1)) {
-          // if previous letter is -l
-          if (word.length > 1 && word[i - 1] === 'l') {
+          // if previous letter is -l or -r
+          if (word.length > 1 && endingConst.includes(word[i - 1])) {
             // if previous previous letter is a vowel, then don't add to syllable count
             if (word.length > 2 && vowels.test(word[i - 2])) {
               continue;

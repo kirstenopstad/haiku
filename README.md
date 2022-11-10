@@ -21,7 +21,6 @@
 ### Objectives (MVP)
 An application that checks whether a poem is a haiku. 
 
-If time, build out your application so that it can randomly generate haikus.
 * logic should verify that the poem has three lines.
 * logic should verify English syllable rules (and exceptions) one at a time. 
   1. A syllable is formed by at least one vowel (a, e, i, o, u).
@@ -49,6 +48,10 @@ If time, build out your application so that it can randomly generate haikus.
   6. Compound nouns are always divided between the two words.  
   7. Divide before the consonant before an "-le" syllable and sounds like “-el”.
 
+If time, build out your application so that it can randomly generate haikus.
+     <!-- snow mixes with rain— || NOUN VERBS PREPOSITION NOUN
+      my mother keeps calling me || ___ NOUN ____ VERB NOUN
+      by my brother's name ||  -->
 <!-- 
 This template includes placeholders for:
 
