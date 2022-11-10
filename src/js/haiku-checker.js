@@ -5,14 +5,29 @@ export class Haiku {
     this.text = text;
   }
 
-  checkOurHaiku = () => {
+  checkOurHaiku () {
     const result = this.checkHaiku(this.text);
     if (result != "poem") {
+      return false;
+    } else {
+      const line1Syll = this.countSyllables(this.line1);
+      console.log(line1Syll);
+      console.log(typeof line1Syll);
+      const line2Syll = this.countSyllables(this.line2);
+      console.log(line2Syll);
+      console.log(typeof line2Syll);
+      const line3Syll = this.countSyllables(this.line3);
+      console.log(line3Syll);
+      console.log(typeof line3Syll);
+      if (line1Syll === 5 && line2Syll === 7 && line3Syll === 5) {
+        console.log("second" + this.countSyllables(this.line1));
+        return true;
+      }
       return false;
     }
   }
 
-  countSyllables = (line) => {
+  countSyllables (line) {
     const words = line.split(" ");
     let totalSyllables = 0;
     words.forEach(element => {
@@ -21,12 +36,10 @@ export class Haiku {
     return totalSyllables;
   }
 
-  checkHaiku = (text) => {
+  checkHaiku(text) {
     if (text) {
       // Check line count
       const lineArray = text.split("\n");
-      console.log(lineArray);
-      console.log(lineArray.length);
       if (lineArray.length > 3) {
         return "too many lines";
       } else if (lineArray.length < 3) {
@@ -35,7 +48,7 @@ export class Haiku {
         //syllable checking
         this.line1 = lineArray[0];
         this.line2 = lineArray[1];
-        this.line3 = lineArray[3];
+        this.line3 = lineArray[2];
       }
 
       return "poem";
@@ -44,10 +57,10 @@ export class Haiku {
     }
   }
 
-  checkWord = (word) => {
+  checkWord (word) {
     // define vowel set
     const vowels = /[aeiouy]/
-    const diphVowels = ["oo", "ea", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
+    const diphVowels = ["oo", "ea", "ay", "ae", "oi", "ou", "oa", "ee", "ai", "eau"];
     let syllableCount = 0;
     for (let i = 0; i < word.length; i++) {
       if (vowels.test(word[i])) {

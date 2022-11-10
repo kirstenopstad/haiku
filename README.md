@@ -24,6 +24,30 @@ An application that checks whether a poem is a haiku.
 If time, build out your application so that it can randomly generate haikus.
 * logic should verify that the poem has three lines.
 * logic should verify English syllable rules (and exceptions) one at a time. 
+  1. A syllable is formed by at least one vowel (a, e, i, o, u).
+    * Exceptions:
+      * a) Silent e is not counted as a vowel in a syllable.
+        For example: tape, like, love, ex-treme, take, blue.
+
+      * b) When two vowels carry one sound (diphthong), they cannot be divided.
+        For example: coin, loud, bread, moon, sound, beau-ti-ful, a-void.
+
+      * c) The letter “y” is not strictly a vowel but behaves like one.
+           For example: man-y, bi-cy-cle, i-vy.
+  2. Divide the syllable between two same consonants. (For example: rab-bit, let-ter, buf-fet, des-sert, ber-ry.)
+  3. Vowel with long/short vowel sound...
+     * The consonant goes with the second vowel if the first vowel has a long vowel sound.             
+            * For example: ba-sic, ro-bot, wa-ter.
+     * The consonant goes with the first vowel if it has a short vowel sound.    
+           * For example: riv-er, mod-el, pan-el.
+  4. Divide between two vowels that make two sounds. 
+     * For example: di-et, di-aer-e-sis.
+     * Exception:   
+        * Two vowels make one sound.
+        * For example: coat, boat, meet
+  5. Use prefixes and suffixes to separate syllables.  
+  6. Compound nouns are always divided between the two words.  
+  7. Divide before the consonant before an "-le" syllable and sounds like “-el”.
 
 <!-- 
 This template includes placeholders for:
@@ -62,6 +86,8 @@ $ npm run test
 
 ## Known Bugs
 
+* Handle case of word that ends in -ed
+* Handle case of word that ends in -es
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
   * BUG: _A brief description of the bug_
   * FIX: _Suggestion for solution (if you have one!)_
