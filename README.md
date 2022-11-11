@@ -89,6 +89,8 @@ $ npm run test
 
 ## Known Bugs
 
+* BUG: Test 'It should return true if poem is a haiku.' is failing -> look at line 23
+* Handle punctuation
 * Handle case of word that ends in -ed
 * Handle case of word that ends in -es
 * No known bugs. If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:

@@ -5,12 +5,12 @@ describe('check haiku', () => {
   let goodHaiku;
   let shortHaiku;
   let longHaiku;
-
+  let generatedHaiku;
 
   beforeEach(() => {
     haiku = new Haiku("hellow world");
     goodHaiku = new Haiku(
-    `snow mixes with rain—
+    `snow mixes with rain
     my mother keeps calling me
     by my brother's name`);
     shortHaiku = new Haiku(
@@ -22,7 +22,32 @@ describe('check haiku', () => {
       my own mother keeps calling me
       by my brother's name`);
 
+    generatedHaiku = new Haiku();
+    generatedHaiku.buildWordBank("A young girl named Alice sits bored by a riverbank where she suddenly spots a White Rabbit with a pocket watch and waistcoat lamenting that he is late");
   });
+
+  //buildLine tests ------
+  test('It should return a line with specified syllables', () => {
+    let line = generatedHaiku.buildLine(5);
+    // console.log(line);
+    //console.log(generatedHaiku.countSyllables(line))
+    expect(generatedHaiku.countSyllables(line)).toEqual(5);
+  });
+
+
+
+  //generateHaiku tests -----
+  test('it should return a haiku', () => {
+    let AIhaiku = generatedHaiku.generateHaiku();
+    console.log(AIhaiku);
+    expect(generatedHaiku.checkHaiku(AIhaiku)).toEqual("poem");
+  });
+
+  // buildWordBank tests --------
+  test('It should add input text to word bank', () => {
+    expect(generatedHaiku.WBWordCount).toEqual(26);
+  });
+
   // word Bank tests --------
 
   test('It should store multiple syllables', () => {
@@ -30,7 +55,9 @@ describe('check haiku', () => {
     haiku.addWBWord("diet", 2); 
     haiku.addWBWord("fungible", 3);
     haiku.addWBWord("beautiful", 3);
-    expect(haiku.wordBank.toString()).toEqual("word,diet,fungible,beautiful");
+    const string = haiku.wordBank[1].toString() + ","+ haiku.wordBank[2].toString()+ "," + haiku.wordBank[3].toString();
+    expect(haiku.wordBank).toEqual({1: ["word"], 2: ["diet"], 3: ["fungible", "beautiful"]});
+    expect(string).toEqual("word,diet,fungible,beautiful");
     expect(haiku.highestSyllable).toEqual(3);
   });
 
